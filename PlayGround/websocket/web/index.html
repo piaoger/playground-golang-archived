@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<meta charset="utf-8" />
+<title>go WebSocket Test Page</title>
+
+<script language="javascript"type="text/javascript">
+
+    var wsuri ="ws://localhost:1234/socket",
+        chatCount = 0,
+        maxChatCount = 10,
+        chatContent;
+
+    function init() {
+        chatContent = document.getElementById("chatcontent");
+        testWebSocket();
+    }
+
+    function testWebSocket() {
+
+        var websocket = new WebSocket(wsuri);
+
+        websocket.onopen = function(event) {
+            onOpen(event);
+        };
+
+        websocket.onclose = function(event) {
+            onClose(event);
+        };
+
+        websocket.onmessage = function(event) {
+            onMessage(event);
+        };
+
+        websocket.onerror = function(event) {
+            onError(event);
+        }
+
+        function onOpen(event) {
+            writeToScreen("CONNECTED");
+            doSend("WebSocket rocks");
+        }
+
+        function onClose(event) {
+            writeToScreen("DISCONNECTED");
+        }
+
+        function onMessage(event) {
+            writeToScreen('<span style="color: blue;">RESPONSE: '+ event.data+'</span>');
+            if(chatCount === maxChatCount) {
+                doSend('I am tired, bye!');
+                websocket.close();
+            } else {
+                doSend('I am happy....');
+                chatCount ++;
+            }
+        }
+
+        function onError(event) {
+            writeToScreen('<span style="color: red;">ERROR:</span> '+ event.data);
+        }
+
+        function doSend(message) {
+            writeToScreen("SENT: " + message);
+            websocket.send(message);
+        }
+
+        function writeToScreen(message) {
+            var pre = document.createElement("p");
+            pre.style.wordWrap = "break-word";
+            pre.innerHTML = message;
+
+            chatContent.appendChild(pre);
+        }
+    }
+
+    window.addEventListener("load", init, false);
+
+</script>
+
+<h2>WebSocket Test</h2>
+<div id="chatcontent"></div>
+
+</html>

@@ -1,0 +1,3 @@
+go run helloworld.go
+go build helloworld.go
+go run datatypes.go
