@@ -1,0 +1,8 @@
+{
+    "bazzar": {
+        "bazzar_name": "bazzar",
+        "bazzar_api_host": "api.bazzar.com",
+        "bazzar_host": "www.bazzar.com",
+        "bazzar_Summary": "Bazzar is bazzar"
+    }
+}
