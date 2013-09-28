@@ -52,6 +52,8 @@ For each example, there are at least 2 *.bat file to set up environment and buil
 
 + appengine
 
-    An example about how create go application on Google App Engine
+    An example about how to create go application on Google App Engine
 
++ httpget
 
+    An example about how to use net.http module.
