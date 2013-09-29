@@ -12,6 +12,7 @@ import (
 
 func main() {
 
+
     // Read Configuration
     fd, err := os.OpenFile("config.json", os.O_RDONLY | os.O_CREATE, 0)
     if err != nil {
@@ -27,12 +28,23 @@ func main() {
         Bazzar Bazzar
     }
 
+    var configuration Configuration
     decoder := json.NewDecoder(fd)
     for {
-        var m Configuration
-        if err := decoder.Decode(&m); err != nil{
+        if err := decoder.Decode(&configuration); err != nil{
             break
         }
-       fmt.Printf("Summary: %s\n", m.Bazzar.Bazzar_Summary)
+       fmt.Printf("Summary: %s\n", configuration.Bazzar.Bazzar_Summary)
+    }
+
+    fd, err = os.OpenFile("config.rewrite.json", os.O_RDONLY | os.O_CREATE, 0)
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer fd.Close()
+
+    encoder := json.NewEncoder(fd)
+    if err := encoder.Encode(configuration); err != nil {
+        fmt.Println("Cannot encode:", err)
     }
 }

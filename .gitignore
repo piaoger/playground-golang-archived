@@ -16,3 +16,4 @@ PlayGround/polymorphism/*.exe
 PlayGround/websocket/*.exe
 PlayGround/httpclient/*.exe
 PlayGround/readjson/*.exe
+PlayGround/marketplace/*.*
