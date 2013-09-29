@@ -1,0 +1,18 @@
+
+
+# Components
+##############
+Components/go
+Components/GoAppEngineSDK
+
+# results
+##############
+PlayGround/actor/*.exe
+PlayGround/appengine/*.exe
+PlayGround/concurrency/*.exe
+PlayGround/firsttour/*.exe
+PlayGround/mapreduce/*.exe
+PlayGround/polymorphism/*.exe
+PlayGround/websocket/*.exe
+PlayGround/httpclient/*.exe
+PlayGround/readjson/*.exe
