@@ -2,16 +2,12 @@ package main
 
 import (
     "encoding/json"
- //   "strings"
     "os"
-
-
     "log"
     "fmt"
 )
 
 func main() {
-
 
     // Read Configuration
     fd, err := os.OpenFile("config.json", os.O_RDONLY | os.O_CREATE, 0)
@@ -47,4 +43,10 @@ func main() {
     if err := encoder.Encode(configuration); err != nil {
         fmt.Println("Cannot encode:", err)
     }
+
+    // There is another open sourced project. Looks good :
+    // https://github.com/bemasher/JSONGen
+
+    // https://github.com/aawc/learn/blob/master/Go/GoTour/src/code.google.com/p/go.talks/2012/zen/jsonformat.go
+
 }
